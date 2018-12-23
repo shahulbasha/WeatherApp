@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.weather.controller.MainController">
+   <children>
+      <VBox prefHeight="575.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTextField fx:id="cityName" alignment="CENTER" focusColor="#ff5912" labelFloat="true" prefHeight="25.0" prefWidth="150.0" promptText="City Name" stylesheets="@../resources/application.css">
+               <VBox.margin>
+                  <Insets left="150.0" right="150.0" top="40.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="searchButton" alignment="CENTER" onAction="#fetchCurrentWeather" prefHeight="22.0" prefWidth="127.0" ripplerFill="#d01515" text="Search">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="250.0" top="30.0" />
+               </VBox.margin>
+            </JFXButton>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="331.0" stylesheets="@../resources/application.css" text="Label" textAlignment="CENTER" underline="true" wrapText="true">
+               <VBox.margin>
+                  <Insets left="150.0" right="150.0" top="60.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="137.0" prefHeight="36.0" prefWidth="331.0" stylesheets="@../resources/application.css" text="Label" textAlignment="CENTER" underline="true" wrapText="true">
+               <VBox.margin>
+                  <Insets left="150.0" right="150.0" top="30.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="203.0" prefHeight="36.0" prefWidth="331.0" stylesheets="@../resources/application.css" text="Label" textAlignment="CENTER" underline="true" wrapText="true">
+               <VBox.margin>
+                  <Insets left="150.0" right="150.0" top="30.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="269.0" prefHeight="36.0" prefWidth="331.0" stylesheets="@../resources/application.css" text="Label" textAlignment="CENTER" underline="true" wrapText="true">
+               <VBox.margin>
+                  <Insets left="150.0" right="150.0" top="30.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
