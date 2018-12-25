@@ -38,7 +38,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 public class MainController {
@@ -56,6 +59,10 @@ public class MainController {
     	service.setCityName(cityName.getText());
     	
     	service.restart();
+    	service.setOnRunning(e->{
+    		//set Label to loading and progress bar bind it
+    	});
+    	
     	//one way to prevent the Application thread from making the weather API call using Executor Service
     	//disadvantage is the absence of succeeded and fail method
     	/*ExecutorService executorService=Executors.newSingleThreadExecutor();
