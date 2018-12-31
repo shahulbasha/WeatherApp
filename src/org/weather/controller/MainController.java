@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import javax.json.JsonObject;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
+import javax.persistence.GeneratedValue;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -35,6 +36,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.concurrent.Task;
@@ -43,24 +45,85 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 public class MainController {
 	
-    @FXML
-    private JFXTextField cityName;
+	 @FXML
+	    private JFXTextField cityName;
 
-    @FXML
-    private JFXButton searchButton;
+	    @FXML
+	    private JFXButton searchButton;
+
+	    @FXML
+	    private JFXButton forecastButton;
+
+	    @FXML
+	    private Text place;
+
+	    @FXML
+	    private Text time;
+
+	    @FXML
+	    private Text weatherDescription;
+
+	    @FXML
+	    private Text visibility;
+
+	    @FXML
+	    private Text temperature;
+
+	    @FXML
+	    private Text humidity;
+
+	    @FXML
+	    private Text windSpeed;
+
+	    @FXML
+	    private Text clouds;
+	    
+	    @FXML
+	    private JFXProgressBar progressBar;
+
+
+	    @FXML
+	    void fetchForecast(ActionEvent event) {
+
+	    }
 
     @FXML
     void fetchCurrentWeather(ActionEvent event) {
     	
     	WeatherService service=new WeatherService();
     	service.setCityName(cityName.getText());
-    	
+    	progressBar.setProgress(0);
     	service.restart();
     	service.setOnRunning(e->{
     		//set Label to loading and progress bar bind it
+    		progressBar.progressProperty().unbind();
+        	progressBar.progressProperty().bind(service.workDoneProperty());
+    		
+    	});
+    	
+    	service.setOnSucceeded(e->{
+    		WeatherModel model = (WeatherModel)e.getSource().getValue();    
+    		place.setText(model.getCityName());
+    		time.setText(String.valueOf(model.getLocalTime().getHour())+":"+String.valueOf(model.getLocalTime().getMinute()));
+    		visibility.setText("Visibility   "+String.valueOf(model.getVisibility()));
+    		weatherDescription.setText(model.getCurrentWeatherDescription());
+    		temperature.setText(String.valueOf(model.getTemperature())+" C");
+    		clouds.setText("Clouds  "+String.valueOf(model.getClouds()));
+    		humidity.setText("Humidity  "+String.valueOf(model.getHumidity()));
+    		windSpeed.setText("Wind Speed  "+String.valueOf(model.getWindSpeed()));
+    		progressBar.progressProperty().unbind();
+    		progressBar.setProgress(0);
+    		
+    	});
+    	
+    	service.setOnFailed(e->{
+    		WeatherModel model = (WeatherModel)e.getSource().getValue();    
+    		place.setText("ServiceFailure"+model.getCityName());
     	});
     	
     	//one way to prevent the Application thread from making the weather API call using Executor Service

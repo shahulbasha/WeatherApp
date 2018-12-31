@@ -1,1 +1,48 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+* {
+	-fx-primary : #282837;
+	-fx-secondary :rgb(0,255,255);
+	-fx-primarytext :#B2B2B2;
+	-fx-red:red;
+}
+
+
+.root{
+	-fx-background-color: -fx-primary;
+}
+
+.button{
+	-fx-text-fill:-fx-primarytext;
+	-fx-background-color: -fx-primary;
+	-fx-border-color: -fx-secondary;
+	-fx-border-radius: 20px;
+	-fx-background-radius: 20px;
+	-fx-font-size:10pt;
+}
+
+.button:hover{
+	-fx-background-color: -fx-secondary;
+	-fx-text-fill: -fx-primary;
+}
+
+
+.main-text{
+	-fx-fill : -fx-secondary;
+	-fx-font-size: 11pt;
+	-fx-text-alignment: center;
+}
+
+.text-field{
+	-fx-text-fill: -fx-primarytext;
+	-fx-font-size: 11pt;
+	-jfx-focus-color:-fx-secondary;
+	
+}
+
+.label{
+	-fx-text-fill: -fx-primarytext;
+}
+
+.glyph-icon{
+	-fx-fill: -fx-primarytext;
+	-fx-font-size: 11pt;
+}

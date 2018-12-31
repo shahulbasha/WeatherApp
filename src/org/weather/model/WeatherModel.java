@@ -1,5 +1,8 @@
 package org.weather.model;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class WeatherModel {
 
 	private double latitude;
@@ -17,13 +20,24 @@ public class WeatherModel {
 	private int clouds;
 	private double windSpeed;
 	
+	private LocalDateTime localTime;
+	
+	public LocalDateTime getLocalTime() {
+		return localTime;
+	}
+
+	public void setLocalTime(LocalDateTime localTime) {
+		this.localTime = localTime;
+	}
+
 	@Override
 	public String toString() {
 		return "WeatherModel [latitude=" + latitude + ", longitude=" + longitude + ", cityName=" + cityName
 				+ ", temperature=" + temperature + ", currentWeather=" + currentWeather + ", currentWeatherDescription="
 				+ currentWeatherDescription + ", pressure=" + pressure + ", humidity=" + humidity
 				+ ", minimumTemperature=" + minimumTemperature + ", maximumTemperature=" + maximumTemperature
-				+ ", visibility=" + visibility + ", clouds=" + clouds + ", windSpeed=" + windSpeed + "]";
+				+ ", visibility=" + visibility + ", clouds=" + clouds + ", windSpeed=" + windSpeed + ", localTime="
+				+ localTime + "]";
 	}
 	
 	public double getLatitude() {

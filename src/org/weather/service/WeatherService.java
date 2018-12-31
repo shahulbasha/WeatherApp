@@ -12,6 +12,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import org.weather.controller.MainController;
 import org.weather.model.WeatherModel;
 import org.weather.util.WeatherUtilManager;
 
@@ -41,16 +42,20 @@ public class WeatherService extends Service<WeatherModel>{
 				return new WeatherProvider().get(cityName);
 			}
 			
-			@Override
+/*			@Override
 			public void succeeded() {
 				WeatherModel weatherModel = getValue();
 				//set the model on GUI
+				MainController controller=new MainController();
+				
+			
 			}
 			
 			public void failed() {
 				//set Error model on GUI
 				
-			}
+				
+			}*/
 		};
 	}
 

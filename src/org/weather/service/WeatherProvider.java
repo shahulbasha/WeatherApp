@@ -53,12 +53,12 @@ public class WeatherProvider implements WeatherSupplier {
 			model.setWindSpeed(readTree.get("wind").get("speed").doubleValue());
 			
 			long longValue = readTree.get("dt").longValue()*1000;
-
+			Instant ofEpochSecond = Instant.ofEpochSecond(longValue);
+			//System.out.println(ofEpochSecond.);
 			LocalDate date =Instant.ofEpochMilli(longValue).atZone(ZoneId.systemDefault()).toLocalDate();
 			LocalDateTime localTime = LocalDateTime.ofInstant( Instant.ofEpochMilli(longValue), ZoneId.systemDefault());
 			
-			System.out.println(date.toString());
-			System.out.println(localTime.toString());
+			model.setLocalTime(localTime);
 			ArrayNode array=(ArrayNode)readTree.get("weather");
 			for (JsonNode jsonNode : array) {
 				model.setCurrentWeatherDescription(jsonNode.get("description").textValue());
