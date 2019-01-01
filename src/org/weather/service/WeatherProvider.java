@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Date;
 
 import javax.json.JsonObject;
 import javax.ws.rs.client.Client;
@@ -53,10 +54,14 @@ public class WeatherProvider implements WeatherSupplier {
 			model.setWindSpeed(readTree.get("wind").get("speed").doubleValue());
 			
 			long longValue = readTree.get("dt").longValue()*1000;
-			Instant ofEpochSecond = Instant.ofEpochSecond(longValue);
+			
+			Instant ofEpochSecond = Instant.ofEpochSecond(longValue/1000);
+			Date date=new Date(longValue);
+			System.out.println(date.getTime());
+			//System.out.println();
 			//System.out.println(ofEpochSecond.);
-			LocalDate date =Instant.ofEpochMilli(longValue).atZone(ZoneId.systemDefault()).toLocalDate();
-			LocalDateTime localTime = LocalDateTime.ofInstant( Instant.ofEpochMilli(longValue), ZoneId.systemDefault());
+			//LocalDate date =Instant.ofEpochMilli(longValue).atZone(ZoneId.Of).toLocalDate();
+			LocalDateTime localTime = LocalDateTime.ofInstant( Instant.ofEpochMilli(date.getTime()), ZoneId.systemDefault());
 			
 			model.setLocalTime(localTime);
 			ArrayNode array=(ArrayNode)readTree.get("weather");

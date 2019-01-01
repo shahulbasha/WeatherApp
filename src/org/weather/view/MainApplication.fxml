@@ -29,7 +29,7 @@
                   <Insets left="10.0" top="30.0" />
                </VBox.margin>
                <children>
-                  <JFXButton fx:id="searchButton" alignment="CENTER" onAction="#fetchCurrentWeather" prefHeight="29.0" prefWidth="127.0" ripplerFill="#d01515" text="Current Weather">
+                  <JFXButton fx:id="searchButton" alignment="CENTER" onAction="#fetchCurrentWeather" prefHeight="29.0" prefWidth="141.0" ripplerFill="#d01515" text="Current Weather">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>

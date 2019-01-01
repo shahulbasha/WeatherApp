@@ -13,6 +13,7 @@
 .button{
 	-fx-text-fill:-fx-primarytext;
 	-fx-background-color: -fx-primary;
+	-fx-font-family: "Comic Sans MS";
 	-fx-border-color: -fx-secondary;
 	-fx-border-radius: 20px;
 	-fx-background-radius: 20px;
@@ -27,6 +28,8 @@
 
 .main-text{
 	-fx-fill : -fx-secondary;
+	-fx-font-family: "Comic Sans MS";
+	-fx-font-weight: Bold;
 	-fx-font-size: 11pt;
 	-fx-text-alignment: center;
 }
@@ -34,12 +37,16 @@
 .text-field{
 	-fx-text-fill: -fx-primarytext;
 	-fx-font-size: 11pt;
+	-fx-font-family: "Comic Sans MS";
+	-fx-font-weight: Bold;
 	-jfx-focus-color:-fx-secondary;
 	
 }
 
 .label{
 	-fx-text-fill: -fx-primarytext;
+	-fx-font-family: "Comic Sans MS";
+	-fx-font-weight: Bold;
 }
 
 .glyph-icon{
